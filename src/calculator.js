@@ -6,9 +6,22 @@ function add(numbers){
   if (numbers.includes(","))
   {
     var numberArray = numbers.split(",");
-    return parseInt(numberArray[0]) + parseInt(numberArray[1]);
+    return sum(numberArray);
   }
-  return parseInt(numbers);
+  else
+  {
+    return parseInt(numbers);
+  }
+}
+
+function sum(numberArray)
+{
+  var sum = 0;
+  for(var i=0; i < numberArray.length; i++)
+  {
+    sum += parseInt(numberArray[i]);
+  }
+  return sum;
 }
 
 module.exports = add;
