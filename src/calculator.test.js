@@ -48,6 +48,23 @@ it("should return an exception if there is a negative number", () =>
 
 it("should return only numbers that are lower than 1000", () =>
 {
-  expect(add("1000,2")).toBe(2)
+  expect(add("1001,2")).toBe(2)
 });
 
+
+//eru tvær línur?
+//er fyrsta línan með "//" inní sér?
+//    þá er 3. stafurinn í fyrstu línunni nýja afmörkunin
+//
+//    1,3 => 4
+//    //;\n1;3 => 4
+
+it("should return number", () =>
+{
+  expect(add("//;\n1;2")).toBe(3)
+});
+
+it("should return number", () =>
+{
+  expect(add("//;\n1;\n2")).toBe(3)
+});

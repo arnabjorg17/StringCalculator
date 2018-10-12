@@ -1,3 +1,5 @@
+var delimiter = ",";
+
 function add(numbers){
 
   if(numbers == "")
@@ -5,11 +7,34 @@ function add(numbers){
     return 0;
   }
 
-  if (numbers.includes(",") || numbers.includes("\n"))
+  //ef ég er með fleirri en 1 línu
+  if(numbers.split("\n").length >= 2){
+    //skipa línunum í fylki
+    var lines = numbers.split("\n");
+    
+    //ef fyrsta línan eftir það inniheldur //
+    if(lines[0].includes("//")){
+      //þá er nýja afmörkunin strengurinn á og eftir 3. staf
+      delimiter = lines[0].substring(2);
+      
+      //útaf því að við viljum ekki hafa fyrstu línuna
+      //s.s. línuna með //
+      //þá þurfum við að taka hana úr numbers
+      var all_other_lines = "";
+
+      for(var i = 1; i < lines.length; i++){
+        all_other_lines += lines[i];
+      }
+      numbers = all_other_lines;
+    }
+  }
+
+  if (numbers.includes(delimiter) || numbers.includes("\n"))
   {
-    var re = RegExp("( |\\n|,)");
+    var re = RegExp("( |\\n|" + delimiter + ")");
     var numberArray = numbers.split(re);
     
+
     return sum(numberArray);
   }
   else
