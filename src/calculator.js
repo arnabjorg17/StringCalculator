@@ -30,7 +30,7 @@ function sum(numberArray)
     //ef stafur er tala og stærra en 0
     if(!isNaN(num_to_add) && num_to_add >= 0){
       //plussa saman
-      if(num_to_add < 1000)
+      if(num_to_add <= 1000)
       {
         sum += num_to_add;
       }
