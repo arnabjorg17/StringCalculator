@@ -30,3 +30,18 @@ it("should return sum between numbers that have new lines", () =>
 {
   expect(add("1\n2")).toBe(3)
 });
+
+
+it("should return an exception if there is a negative number", () =>
+{
+  expect(()=> {
+    add("-1, 5");
+  }).toThrow("Negatives not allowed: -1");
+});
+
+it("should return an exception if there is a negative number", () =>
+{
+  expect(()=> {
+    add("-1, -5");
+  }).toThrow("Negatives not allowed: -1,-5");
+});

@@ -9,7 +9,6 @@ function add(numbers){
   {
     var re = RegExp("( |\\n|,)");
     var numberArray = numbers.split(re);
-    console.log(numberArray);
     
     return sum(numberArray);
   }
@@ -22,12 +21,33 @@ function add(numbers){
 function sum(numberArray)
 {
   var sum = 0;
+  var negatives = [];
   
   for(var i=0; i < numberArray.length; i++)
   {
-    if(!isNaN(parseInt(numberArray[i])))
-      sum += parseInt(numberArray[i]);
+    var num_to_add = parseInt(numberArray[i]);
+
+    if(!isNaN(num_to_add) && num_to_add >= 0){
+      sum += num_to_add;
+    }
+    else if (!isNaN(num_to_add) && num_to_add < 0){
+      negatives.push(num_to_add);
+    }
   }
+
+  if(negatives.length > 0){
+    var error = "Negatives not allowed: ";
+    
+    for(var i = 0; i < negatives.length; i++){
+      error+= negatives[i];
+
+      if(i < negatives.length-1)
+        error += ",";
+    }
+
+    throw error;
+  }
+
   return sum;
 }
 
