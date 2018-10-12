@@ -45,3 +45,9 @@ it("should return an exception if there is a negative number", () =>
     add("-1, -5");
   }).toThrow("Negatives not allowed: -1,-5");
 });
+
+it("should return only numbers that are lower than 1000", () =>
+{
+  expect(add("1000,2")).toBe(2)
+});
+
