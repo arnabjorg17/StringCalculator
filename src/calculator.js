@@ -1,11 +1,16 @@
 function add(numbers){
+
   if(numbers == "")
   {
     return 0;
   }
-  if (numbers.includes(","))
+
+  if (numbers.includes(",") || numbers.includes("\n"))
   {
-    var numberArray = numbers.split(",");
+    var re = RegExp("( |\\n|,)");
+    var numberArray = numbers.split(re);
+    console.log(numberArray);
+    
     return sum(numberArray);
   }
   else
@@ -17,9 +22,11 @@ function add(numbers){
 function sum(numberArray)
 {
   var sum = 0;
+  
   for(var i=0; i < numberArray.length; i++)
   {
-    sum += parseInt(numberArray[i]);
+    if(!isNaN(parseInt(numberArray[i])))
+      sum += parseInt(numberArray[i]);
   }
   return sum;
 }

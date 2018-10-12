@@ -20,3 +20,13 @@ it("should return sum of unknown number of numbers", () =>
   expect(add("1,2,3")).toBe(6);
   expect(add("1,1,1,1")).toBe(4);
 });
+
+it("should return sum between numbers that have new lines", () =>
+{
+  expect(add("1\n2,3")).toBe(6)
+});
+
+it("should return sum between numbers that have new lines", () =>
+{
+  expect(add("1\n2")).toBe(3)
+});
